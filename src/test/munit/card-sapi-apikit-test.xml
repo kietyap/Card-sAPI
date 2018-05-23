@@ -8,7 +8,7 @@ http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/moc
         <spring:import resource="classpath:card-sapi.xml" />
     </spring:beans>
     <munit:config mock-connectors="false" mock-inbounds="false" doc:name="MUnit configuration"/>
-    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="9081" basePath="/api" doc:name="HTTP Request Configuration"/>
+    <http:request-config name="HTTP_Request_Configuration" host="localhost" port="9091" basePath="/api" doc:name="HTTP Request Configuration"/>
     <munit:test name="get:/GetCardStatus:card-sapi-config-200-application/json-FlowTest" description="Verifying functionality of [get:/GetCardStatus:card-sapi-config-200-application/json]">
         <set-variable variableName="CardNo" value="#['1234123412341234']" doc:name="CardNo" />
         <http:request config-ref="HTTP_Request_Configuration" method="GET" path="/GetCardStatus" doc:name="HTTP">
