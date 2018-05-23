@@ -1,0 +1,48 @@
+#%RAML 1.0
+version: v1
+title: Card sAPI
+baseUri: http://localhost:9081/api
+
+types:
+  Customer: !include exchange_modules/84ac6944-3e5a-4554-9da8-54180ae49fde/datatype/1.0.0/DataType/CustomerDT.raml
+  Account: !include exchange_modules/84ac6944-3e5a-4554-9da8-54180ae49fde/datatype/1.0.0/DataType/AccountDT.raml
+  CardStatus: !include exchange_modules/84ac6944-3e5a-4554-9da8-54180ae49fde/datatype/1.0.0/DataType/CardStatusDT.raml
+  Card:
+    type: object
+    properties: 
+      custInfo:
+        type: Customer
+        example: !include exchange_modules/84ac6944-3e5a-4554-9da8-54180ae49fde/datatype/1.0.0/Example/CustomerEx.raml
+      acctInfo:
+        type: Account
+        example: !include exchange_modules/84ac6944-3e5a-4554-9da8-54180ae49fde/datatype/1.0.0/Example/AccountEx.raml
+      cardNo:
+        type: string
+        example: '123456789012'
+      cardTypeNo:
+        type: string
+        example: '0003'
+
+/GetCardStatus:
+  get:
+    queryParameters: 
+      CardNo:
+        type: string
+        example: '123456789012'
+    responses: 
+      200:
+        body: 
+          application/json:
+            type: 
+              CardStatus
+
+/PostCard:
+  post:
+    body: 
+      application/json:
+        type: Card
+    responses: 
+      200:
+        body: 
+          application/json:
+            type: CardStatus

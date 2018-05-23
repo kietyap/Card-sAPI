@@ -1,0 +1,15 @@
+#%RAML 1.0 DataType
+type: object
+properties: 
+  ACCT_NO: string
+  ACCT_TYPE: string
+  BRANCH: string
+  STAFF_CODE?: string
+  STATUS: string
+  CURRENCY_CD: string
+  CUR_BALANCE: 
+    type: number
+    format: double 
+  RELEASE_DATE?: date-only
+  EXPIRE_DATE?: date-only
+example: !include ../Example/AccountEx.raml
